@@ -1,0 +1,20 @@
+{
+  "name": "mybots",
+  "homepage": "https://github.com/wierje/myBots",
+  "authors": [
+    "wierje <wier.je@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
