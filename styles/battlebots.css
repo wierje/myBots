@@ -3,11 +3,13 @@ body {
   margin: 0;
   padding: 10px;
   font-size: 3em;
-  background-image: url("https://images.alphacoders.com/293/293771.jpg");
   background-size: fixed;
   background-position: left;
 }
+#game-container {
+  background: url(/img/meh.ro11790.jpg);
 
+}
 .field {
   margin: 20px 0 0 0;
 }
