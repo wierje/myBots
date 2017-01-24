@@ -1,19 +1,19 @@
 /*
   TODO: Modularize this code with IIFE or Browserify
  */
-var Gauntlet = Gauntlet || {};
-Gauntlet.Combatants = {};
+var BattleDome = BattleDome || {};
+BattleDome.Bots = {};
 
 /*
-  Define the base object for any player of Gauntlet,
-  whether a human player or a monster.
+  Define the base object for any player of BattleDome,
+  whether a Robot player or a monster.
  */
-Gauntlet.Combatants.Player = function(name) {
-  this.species = null;
-  this.class = null;
+BattleDome.Bots.Player = function(name) {
+  this.type = null;
+  this.name = null;
   this.weapon = null;
 
-  this.playerName = name || "Oscar the Orc";
+  this.playerName = name || "Oscar the Grouch";
   this.health = Math.floor(Math.random() * 40 + 50);
   this.limbs = ["head", "neck", "arm", "leg", "torso"];
   this.skinColor = "gray";
@@ -40,12 +40,12 @@ Gauntlet.Combatants.Player = function(name) {
   };
 };
 
-Gauntlet.Combatants.Player.prototype.setWeapon = function(newWeapon) {
+BattleDome.Bots.Player.prototype.setWeapon = function(newWeapon) {
   this.weapon = newWeapon;
-}
+};
 
 // thom- this is not being used!
-// Gauntlet.Combatants.Player.prototype.generateClass = function() {
+// BattleDome.Bots.Player.prototype.generateClass = function() {
 //   // Get a random index from the allowed classes array
 //   var random = Math.round(Math.random() * (this.allowedClasses.length - 1));
 
@@ -53,7 +53,7 @@ Gauntlet.Combatants.Player.prototype.setWeapon = function(newWeapon) {
 //   var randomClass = this.allowedClasses[random];
 //   console.log("randomClass worked")
 //   // Composes the corresponding player class into the player object
-//   this.class = new Gauntlet.GuildHall[randomClass]();
+//   this.class = new BattleDome.Armory[randomClass]();
 
 //   // Add the health bonus
 //   this.health += this.class.healthBonus;
@@ -61,13 +61,13 @@ Gauntlet.Combatants.Player.prototype.setWeapon = function(newWeapon) {
 // };
 
 /*
-  Define the base properties for a human in a
+  Define the base properties for a Robot in a
   constructor function.
  */
-Gauntlet.Combatants.Human = function() {
+BattleDome.Bots.Robot = function() {
   var randomSkin;
 
-  this.species = "Human";
+  this.species = "Robot";
   this.intelligence = this.intelligence + 20;
 
   this.skinColors.push("brown", "red", "white", "disease");
@@ -76,18 +76,17 @@ Gauntlet.Combatants.Human = function() {
 
   this.allowedClasses = ["Warrior", "Berserker", "Valkyrie", "Monk", "Wizard", "Sorcerer", "Thief", "Ninja", "Assassin"];
 };
-Gauntlet.Combatants.Human.prototype = new Gauntlet.Combatants.Player();
+BattleDome.Bots.Robot.prototype = new BattleDome.Bots.Player();
 
 
 /*
   Define the base properties for a monster in a
   constructor function.
  */
-Gauntlet.Combatants.Monster = function() {
+BattleDome.Bots.Monster = function() {
   this.health = this.health - 30;
   this.intelligence = this.intelligence -20;
   this.strength = this.strength + 30;
 };
 
-Gauntlet.Combatants.Monster.prototype = new Gauntlet.Combatants.Player();
-
+BattleDome.Bots.Monster.prototype = new BattleDome.Bots.Player();

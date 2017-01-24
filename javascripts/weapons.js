@@ -5,10 +5,10 @@ var Weapon = function() {
 
   this.attackDamage = function() {
     return Math.floor(Math.random() * 10 + this.damage);
-  }
+  };
   this.toString = function(player1Damage) {
     return " hits " + "with " + this.name + " for " + player1Damage + " damage!";
-  }
+  };
 };
 
 var Dagger = function() {
@@ -94,17 +94,3 @@ var Whip = function() {
   this.hands = 2;
 };
 Whip.prototype = new Weapon();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
