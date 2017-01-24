@@ -1,11 +1,13 @@
-var Gauntlet = Gauntlet || {};
-Gauntlet.GuildHall = {};
+(function($, window, document) {
+
+var BattleDome = BattleDome || {};
+BattleDome.Armory = {};
 
 /*
   Base function for a player, or enemy, class (profession)
  */
-Gauntlet.GuildHall.PlayerClass = function() {
-  this.name = "Beggar";
+BattleDome.Armory.PlayerClass = function() {
+  this.name = "Nobot";
   this.healthBonus = 0;
   this.strengthBonus = 0;
   this.intelligenceBonus = 0;
@@ -14,153 +16,120 @@ Gauntlet.GuildHall.PlayerClass = function() {
   this.toString = function() {
     return this.name;
     console.log("this name");
-  }
+  };
 };
 
 /*
-    FIGHTER CLASSES
-      - Warrior
-      - Valkyrie
-      - Berserker
-      - Monk
+    Bipedal Players
+      -Bender
+      -Calculon
+      -Roberto
  */
-Gauntlet.GuildHall.Fighter = function() {
+BattleDome.Armory.Bipedal = function() {
+  this.hasTwoLegs = true;
   this.healthBonus = 20;
   this.strengthBonus = 10;
 };
-Gauntlet.GuildHall.Fighter.prototype = new Gauntlet.GuildHall.PlayerClass();
+BattleDome.Armory.Bipedal.prototype = new BattleDome.Armory.PlayerClass();
 
 
-Gauntlet.GuildHall.Warrior = function() {
-  this.name = "Warrior";
+BattleDome.Armory.Bender = function() {
+  this.name = "Bender";
   this.healthBonus = this.healthBonus + 25;
   this.strengthBonus = this.strengthBonus + 30;
 };
-Gauntlet.GuildHall.Warrior.prototype = new Gauntlet.GuildHall.Fighter();
+BattleDome.Armory.Bender.prototype = new BattleDome.Armory.Bipedal();
 
 
-Gauntlet.GuildHall.Valkyrie = function() {
-  this.name = "Valkyrie";
+BattleDome.Armory.Calculon = function() {
+  this.name = "Calculon";
   this.healthBonus = this.healthBonus + 20;
   this.strengthBonus = this.strengthBonus + 10;
 };
-Gauntlet.GuildHall.Valkyrie.prototype = new Gauntlet.GuildHall.Fighter();
+BattleDome.Armory.Calculon.prototype = new BattleDome.Armory.Bipedal();
 
 
-Gauntlet.GuildHall.Berserker = function() {
-  this.name = "Berserker";
+BattleDome.Armory.Roberto = function() {
+  this.name = "Roberto";
   this.healthBonus = this.healthBonus + 35;
   this.strengthBonus = this.strengthBonus + 20;
 };
-Gauntlet.GuildHall.Berserker.prototype = new Gauntlet.GuildHall.Fighter();
-
-
-Gauntlet.GuildHall.Monk = function() {
-  this.name = "Monk";
-  this.healthBonus = this.healthBonus + 10;
-  this.strengthBonus = this.strengthBonus + 40;
-};
-Gauntlet.GuildHall.Monk.prototype = new Gauntlet.GuildHall.Fighter();
-
+BattleDome.Armory.Roberto.prototype = new BattleDome.Armory.Bipedal();
 
 /*
-    MAGICAL CLASSES
-      - Shaman
-      - Wizard
-      - Conujurer
-      - Sorcerer
+    ATV Players
+    -Gladiator
+    -Scorpion
  */
-Gauntlet.GuildHall.Mage = function() {
-  this.name = "Mage";
+BattleDome.Armory.ATV = function() {
+  this.name = "ATV";
+  this.groundBased = true;
   this.magical = true;
   this.healthBonus = this.healthBonus - 10;
   this.strengthBonus = this.strengthBonus - 20;
   this.intelligenceBonus = this.intelligenceBonus + 20;
 };
-Gauntlet.GuildHall.Mage.prototype = new Gauntlet.GuildHall.PlayerClass();
+BattleDome.Armory.ATV.prototype = new BattleDome.Armory.PlayerClass();
 
 
-Gauntlet.GuildHall.Shaman = function() {
-  this.name = "Shaman";
+BattleDome.Armory.Gladiator = function() {
+  this.name = "Gladiator";
   this.healthBonus = this.healthBonus + 5;
   this.strengthBonus = this.strengthBonus - 10;
   this.intelligenceBonus = this.intelligenceBonus + 20;
 };
-Gauntlet.GuildHall.Shaman.prototype = new Gauntlet.GuildHall.Mage();
+BattleDome.Armory.Gladiator.prototype = new BattleDome.Armory.ATV();
 
 
-Gauntlet.GuildHall.Wizard = function() {
-  this.name = "Wizard";
+BattleDome.Armory.Scorpion = function() {
+  this.name = "Scorpion";
   this.healthBonus = this.healthBonus - 15;
   this.strengthBonus = this.strengthBonus - 25;
   this.intelligenceBonus = this.intelligenceBonus + 40;
 };
-Gauntlet.GuildHall.Wizard.prototype = new Gauntlet.GuildHall.Mage();
-
-
-Gauntlet.GuildHall.Conjurer = function() {
-  this.name = "Conjurer";
-  this.strengthBonus = this.strengthBonus - 10;
-  this.intelligenceBonus = this.intelligenceBonus + 10;
-};
-Gauntlet.GuildHall.Conjurer.prototype = new Gauntlet.GuildHall.Mage();
-
-
-Gauntlet.GuildHall.Sorcerer = function() {
-  this.name = "Sorcerer";
-  this.healthBonus = this.healthBonus - 5;
-  this.strengthBonus = this.strengthBonus - 20;
-  this.intelligenceBonus = this.intelligenceBonus + 30;
-};
-Gauntlet.GuildHall.Sorcerer.prototype = new Gauntlet.GuildHall.Mage();
+BattleDome.Armory.Scorpion.prototype = new BattleDome.Armory.ATV();
 
 
 /*
-    STEALTH CLASSES
-      - Thief
-      - Ninja
-      - Assassin
+    Drone Players
+      - Predator
+      - Reaper
+      - Avenger
  */
-Gauntlet.GuildHall.Stealth = function() {
-  this.name = "Stealth";
+BattleDome.Armory.Drone = function() {
+  this.name = "Drone";
+  this.aerialBot = true;
   this.healthBonus = this.healthBonus + 10;
   this.strengthBonus = this.strengthBonus + 0;
   this.intelligenceBonus = this.intelligenceBonus + 0;
 };
-Gauntlet.GuildHall.Stealth.prototype = new Gauntlet.GuildHall.PlayerClass();
+BattleDome.Armory.Drone.prototype = new BattleDome.Armory.PlayerClass();
 
 
-Gauntlet.GuildHall.Thief = function() {
-  this.name = "Thief";
+BattleDome.Armory.Predator = function() {
+  this.name = "Predator";
   this.healthBonus = this.healthBonus + 5;
   this.strengthBonus = this.strengthBonus +5;
   this.intelligenceBonus = this.intelligenceBonus + 5;
 };
-Gauntlet.GuildHall.Thief.prototype = new Gauntlet.GuildHall.Stealth();
+BattleDome.Armory.Predator.prototype = new BattleDome.Armory.Drone();
 
 
-Gauntlet.GuildHall.Ninja = function() {
-  this.name = "Ninja";
+BattleDome.Armory.Reaper = function() {
+  this.name = "Reaper";
   this.healthBonus = this.healthBonus + 10;
   this.strengthBonus = this.strengthBonus + 10;
   this.intelligenceBonus = this.intelligenceBonus + 10;
 };
-Gauntlet.GuildHall.Ninja.prototype = new Gauntlet.GuildHall.Stealth();
+BattleDome.Armory.Reaper.prototype = new BattleDome.Armory.Drone();
 
 
-Gauntlet.GuildHall.Assassin = function() {
-  this.name = "Assassin";
+BattleDome.Armory.Avenger = function() {
+  this.name = "Avenger";
   this.healthBonus = this.healthBonus + 10;
   this.strengthBonus = this.strengthBonus + 5;
   this.intelligenceBonus = this.intelligenceBonus + 15;
 };
-Gauntlet.GuildHall.Assassin.prototype = new Gauntlet.GuildHall.Stealth();
+BattleDome.Armory.Avenger.prototype = new BattleDome.Armory.Drone();
 
-
-Gauntlet.GuildHall.Rogue = function() {
-  this.name = "Rogue";
-  this.healthBonus = this.healthBonus +15;
-  this.strengthBonus = this.strengthBonus + 20;
-  this.intelligenceBonus = this.intelligenceBonus + 20;
-};
-Gauntlet.GuildHall.Rogue.prototype = new Gauntlet.GuildHall.Stealth();
+}(window.jQuery, window, document));

@@ -5,11 +5,20 @@ body {
   font-size: 3em;
   background-size: fixed;
   background-position: left;
+  background-color: #000;
 }
-#game-container {
-  background: url(/img/meh.ro11790.jpg);
 
+
+.battledome{
+  background: url(/img/meh.ro11790.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
 }
+
+.jumbotron {
+  background-color: transparent !important;
+}
+
 .field {
   margin: 20px 0 0 0;
 }
@@ -21,6 +30,9 @@ body {
   min-width: 500px;
 }
 
+h1 {
+  font-size: 1.5em;
+}
 
 
 /*
@@ -33,6 +45,7 @@ body {
 .card__prompt {
   font-size: 1.1em;
   color: #ECB127;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
   font-weight: bold;
   text-align: center;
   text-transform: uppercase;
@@ -51,9 +64,8 @@ body {
 
 .btn {
   text-decoration: none;
-  background-color: 0,0,0,.0001;
- /* background-image: url(http://i773.photobucket.com/albums/yy19/farmersgoddess/Animated/mediafile1.gif);*/
-  color: #888;
+  /*background-color: 0,0,0,.0001;*/
+  color: #222;
   border-radius: 5px;
   display: inline-block;
   margin: 10px;
@@ -61,14 +73,16 @@ body {
   text-transform: uppercase;
   font-weight: 600;
   padding: 10px 5px;
-  min-width: 260px;
+  min-width: 100px;
+}
+
+.btn-group {
+  color: #000;
 }
 
 .btn--orange {
   border-color: #000000;
   color: white;
-  background-image: url(http://i773.photobucket.com/albums/yy19/farmersgoddess/Animated/mediafile1.gif);
-/*  background-color: #8B5F20;*/
 }
 
 .btn--blue {

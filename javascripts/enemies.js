@@ -1,4 +1,4 @@
-Gauntlet.Combatants.Orc = function() {
+BattleDome.Bots.Orc = function() {
   this.playerName = "Bad Guy Bill";
   this.health = this.health + 20;
   this.species = "Orc";
@@ -12,10 +12,9 @@ Gauntlet.Combatants.Orc = function() {
     var randomClass = this.allowedClasses[random];
 
     // Composes the corresponding player class into the player object
-    this.class = new Gauntlet.GuildHall[randomClass]();
+    this.class = new BattleDome.Armory[randomClass]();
     return this.class;
-  }
+  };
 };
 
-Gauntlet.Combatants.Orc.prototype = new Gauntlet.Combatants.Monster();
-
+BattleDome.Bots.Orc.prototype = new BattleDome.Bots.Monster();
